@@ -1,0 +1,44 @@
+---
+title: "knitting_needles"
+editor: visual
+---
+
+```{r setup, include=FALSE}
+
+library(tidyverse)
+
+needles <- read_csv("data/k_needles.csv", col_types = "cccicc") %>% 
+  arrange(size) %>% 
+  mutate(length = if_else(length == "17","16",length))
+```
+
+##What knitting needles do I have?
+
+
+```{r general needles, echo=FALSE, message=FALSE, warning=FALSE}
+
+k_needles <- needles %>% 
+  mutate(type_or_length = case_when(
+      type == "straight"  ~ "straight",
+      type == "dpn"       ~ "dpn",
+      type == "circular"  ~ length
+    )
+  ) %>% 
+  group_by(size, type_or_length) %>% 
+  summarise(qty = sum(qty)) %>% 
+  ungroup()
+
+k_needles %>% 
+  pivot_wider(names_from = type_or_length, values_from = qty) %>% 
+  pivot_longer(cols = -size, names_to = "type_or_length", values_to = "qty") %>% 
+  ggplot(mapping = aes(x = fct_relevel(size, c("000", "00", "0", "1", "1.5", "2", "2.5", "3", "4", "5", "6", "7", "8", "9", "10", "10.5", "11")), y = fct_relevel(type_or_length, c("dpn", "9","12", "16", "24", "32", "36", "40", "straight")), fill = qty)) +
+  geom_tile(color = "grey", size = 0.25) +
+  coord_flip() +
+  labs(x = "Size", y = "Type") +
+  theme_bw() +
+  scale_fill_continuous(na.value = "white") +
+  scale_x_discrete(expand = c(0,0)) +
+  scale_y_discrete(expand = c(0,0))
+
+
+```
