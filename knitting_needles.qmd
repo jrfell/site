@@ -1,5 +1,5 @@
 ---
-title: "knitting_needles"
+title: "Knitting Needles"
 editor: visual
 ---
 
@@ -12,8 +12,9 @@ needles <- read_csv("data/k_needles.csv", col_types = "cccicc") %>%
   mutate(length = if_else(length == "17","16",length))
 ```
 
-##What knitting needles do I have?
+## What knitting needles do I have?
 
+A practical guide
 
 ```{r general needles, echo=FALSE, message=FALSE, warning=FALSE}
 

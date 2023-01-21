@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: " jrfell's website"
+  title: " A Website"
   navbar:
     left:
       - href: index.qmd

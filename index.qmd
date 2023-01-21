@@ -1,11 +1,5 @@
 ---
-title: "jrfell's website"
+title: "Welcome!"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+Please use the navigation bar on the top of the page.

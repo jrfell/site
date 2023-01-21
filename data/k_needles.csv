@@ -1,0 +1,44 @@
+﻿type,size,length,qty,brand,material
+circular,5,32,1,lykke,wood
+straight,4,,1,unknown,wood
+circular,10,32,1,lykke,wood
+circular,7,32,1,knitter's pride,wood
+circular,7,32,1,chiagoo,bamboo
+circular,7,16,1,unknown,wood
+circular,6,24,1,clover,bamboo
+dpn,2,,1,lykke,wood
+dpn,2,,1,unknown,wood
+dpn,1.5,,1,chiagoo,bamboo
+dpn,1.5,,1,chiagoo,bamboo
+dpn,1,,1,susan bates,metal
+dpn,1,,1,clover,bamboo
+dpn,0,,1,susan bates,metal
+dpn,0,,1,lykke,wood
+dpn,00,,1,susan bates,metal
+dpn,000,,1,susan bates,metal
+dpn,4,,1,clover,bamboo
+dpn,7,,1,clover,bamboo
+dpn,5,,1,chiagoo,bamboo
+dpn,9,,1,knitter's pride,wood
+circular,10,36,1,clover,bamboo
+circular,8,16,1,chiagoo,bamboo
+circular,8,24,1,clover,bamboo
+circular,10.5,17,1,clover,bamboo
+circular,9,40,1,lykke,wood
+straight,13,,1,clover,bamboo
+straight,10.5,,1,clover,bamboo
+circular,5,32,1,chiagoo,bamboo
+circular,3,32,1,lykke,wood
+circular,2.5,16,1,lykke,wood
+circular,2,12,1,lykke,wood
+circular,11,32,1,knitter's pride,wood
+dpn,1.5,,1,lykke,wood
+circular,8,32,1,lykke,wood
+circular,4,24,1,lykke,wood
+circular,2,24,1,lykke,wood
+circular,2.5,32,1,lykke,wood
+dpn,2.5,,1,knitter's pride,carbon
+circular,1.5,9,1,chiagoo,bamboo
+circular,1,24,1,lykke,wood
+circular,0,32,1,lykke,wood
+circular,4,16,1,lykke,wood

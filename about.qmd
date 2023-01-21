@@ -2,8 +2,8 @@
 title: "About"
 ---
 
-About this site
+Hello!
 
-```{r}
-1 + 1
-```
+I'm Jey, a cyclist, knitter, gardener, camper, sewist, outdoors enthusiast, general enthusiast, and occasional data analyst. This site is a perpetual work in progress where I squirrel away my side projects.
+
+If you have any questions, feel free to contact me at [jrfellzel\@gmail.com](mailto:jrfellzel@gmail.com){.email}
