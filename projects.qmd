@@ -1,0 +1,95 @@
+---
+title: "Projects"
+editor: visual
+---
+
+Use the outline to the right to jump to a project.
+
+## R: Determining Capacity
+
+Management at a DV organization wanted more information on whether or not they were running at full capacity so that they could strategize around serving the greatest number of clients.
+
+Starting with a basic anonymized data set showing a client ID, admission date, exit date and program, like below:
+
+```{r setup, echo=FALSE, message=FALSE}
+
+library(tidyverse)
+
+stays <- read_csv("data/FY22-3_stays.csv") %>% 
+  filter(member == "Head of Household") %>% 
+  mutate(location = case_when(
+    location == "TH: RISE Plus" | location == "RRH: RISE Plus" ~ "Rapid Rehousing",
+    location == "ES: Sanctuary II" | location == "ES: Sanctuary Plus" ~ "Shelter",
+    location == "TH: RISE" ~ "Transitional Housing",
+    location == "RRH: FRSP" ~ "RRH: FRSP",
+    location == "NR: Shelter Aftercare" ~ "NR: Shelter Aftercare",
+    location == "NR: RISE Aftercare" ~ "NR: RISE Aftercare"
+)) %>% 
+  filter(location != "NR: RISE Aftercare", location != "RRH: FRSP", location != "NR: Shelter Aftercare") %>%
+  select(-nights, -stay_type, -total_bednights, -member)
+
+print(stays)
+
+```
+
+Through a combination tidyverse, lubridate, data.table, and base R, I was able to reorganize the data:
+
+```{r transformation, warning=FALSE, message=FALSE}
+
+library(data.table)
+library(tidyverse)
+library(lubridate)
+
+#replace N/A in the discharge date column with a future date
+stays$discharge_date <- stays$discharge_date %>%
+  replace_na(ymd(30230131))
+
+
+# set df to data.table format
+setDT(stays)
+
+# Create a table with all dates
+dt.dates <- data.table( date = seq(min(stays$admission_date), max(stays$discharge_date), by = "1 days") )
+
+# perform overlap join
+stays_ <- stays[dt.dates, .(date, client_id, location), on = .(admission_date <= date, discharge_date > date), nomatch = 0L]
+
+#group the stays by location and date, summarize, and filter for the relevant time period, and create columns to show the max clients that could be served per day per program
+client_by_date <- stays_ %>%
+  group_by(location, date) %>%
+  summarise(hoh = n()) %>%
+  filter(date >= ymd(20211001) & date <= ymd(20221231)) %>% 
+  mutate(max_hoh = case_when(
+    location == "Shelter" & date <= ymd(20220930) ~ 16,
+    location == "Shelter" & date > ymd(20220930) ~ 22,
+    location == "Transitional Housing" & date <= ymd(20220930) ~ 30,
+    location == "Transitional Housing" & date > ymd(20220930) ~ 45,
+    location == "Rapid Rehousing" ~ 31
+) , p_full = hoh/max_hoh)
+
+
+```
+
+And create simple charts that show the capacity rate over time for each program:
+
+```{r viz, echo=FALSE}
+
+client_by_date %>% 
+  ggplot() +
+  geom_area(mapping = aes(x = date, y = hoh, color = location, fill = location)) +
+  geom_area(mapping = aes(x = date, y = max_hoh, fill = location), alpha = .2) +
+  facet_wrap(vars(location), scales = "free")+
+  guides(color = "none", fill = "none") +
+  theme_minimal()+
+  theme(panel.grid.minor = element_line(linetype = 0), panel.border = element_rect(size = 2, linetype = 1, fill = 0, color = "grey")) +
+  labs(x = "Date", y = "Heads of Households", title = "Program Capacities")
+
+```
+
+## GIS: Fig Trees
+
+During the Covid Pandemic, I started taking more long walks around my neighborhood and noticed a surprising number of fig trees. I started mapped these trees. This is a work in progress, but the raw data is in a Google map [here](https://www.google.com/maps/d/u/0/edit?mid=1JKdMwM60hqJwJyUddbdyZeL19J7vRaXN&usp=sharing).
+
+## Tableau
+
+You can find examples of my Tableau Dashboards and presentations on my personal [Tableau Public](https://public.tableau.com/app/profile/jey.fell).
