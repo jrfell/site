@@ -70,7 +70,7 @@ client_by_date <- stays_ %>%
 
 ```
 
-And create simple charts that show the capacity rate over time for each program:
+And create simple charts using ggplot that show the capacity rate over time for each program:
 
 ```{r viz, echo=FALSE}
 
@@ -88,7 +88,7 @@ client_by_date %>%
 
 ## GIS: Fig Trees
 
-During the Covid Pandemic, I started taking more long walks around my neighborhood and noticed a surprising number of fig trees. I started mapped these trees. This is a work in progress, but the raw data is in a Google map [here](https://www.google.com/maps/d/u/0/edit?mid=1JKdMwM60hqJwJyUddbdyZeL19J7vRaXN&usp=sharing).
+During the Covid Pandemic, I started taking more long walks around my neighborhood and noticed a surprising number of fig trees. I started mapping these trees, and am considering comparing this data to real estate data. This is a work in progress, but the raw fig tree data is in a Google map [here](https://www.google.com/maps/d/u/0/edit?mid=1JKdMwM60hqJwJyUddbdyZeL19J7vRaXN&usp=sharing).
 
 ## Tableau
 
