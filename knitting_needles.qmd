@@ -15,7 +15,7 @@ needles <- read_csv("data/k_needles.csv", col_types = "cccicc") %>%
 
 ## What knitting needles do I have?
 
-###A practical guide
+### A practical guide
 
 ```{r general needles, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -45,7 +45,7 @@ k_needles %>%
 
 ```
 
-###Wooden needles
+### Wooden needles
 
 ```{r wooden needles, echo=FALSE, message=FALSE, warning=FALSE}
 wood_needles <- needles %>% 
@@ -74,7 +74,7 @@ wood_needles %>%
 
 ```
 
-###Bamboo needles
+### Bamboo needles
 
 ```{r bamboo needles, echo=FALSE, message=FALSE, warning=FALSE}
 bamboo_needles <- needles %>% 
@@ -104,7 +104,7 @@ bamboo_needles %>%
 ```
 
 
-###Metal needles
+### Metal needles
 
 ```{r metal needles, echo=FALSE, message=FALSE, warning=FALSE}
 metal_needles <- needles %>% 
