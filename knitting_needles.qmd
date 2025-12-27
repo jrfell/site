@@ -106,7 +106,6 @@ bamboo_needles %>%
 
 ```
 
-
 ### Metal needles
 
 ```{r metal needles, echo=FALSE, message=FALSE, warning=FALSE}
